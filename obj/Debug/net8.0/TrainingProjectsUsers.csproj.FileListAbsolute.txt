@@ -1,0 +1,14 @@
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.AssemblyInfoInputs.cache
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.AssemblyInfo.cs
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.csproj.CoreCompileInputs.cache
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\bin\Debug\net8.0\TrainingProjectsUsers.exe
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\bin\Debug\net8.0\TrainingProjectsUsers.deps.json
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\bin\Debug\net8.0\TrainingProjectsUsers.runtimeconfig.json
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\bin\Debug\net8.0\TrainingProjectsUsers.dll
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\bin\Debug\net8.0\TrainingProjectsUsers.pdb
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.dll
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\refint\TrainingProjectsUsers.dll
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.pdb
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.genruntimeconfig.cache
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\ref\TrainingProjectsUsers.dll
