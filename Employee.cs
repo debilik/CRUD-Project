@@ -22,4 +22,9 @@ public class Employee
         Department = department;
         AboutMe = aboutMe;
     }
+
+    public Employee()
+    {
+        throw new NotImplementedException();
+    }
 }

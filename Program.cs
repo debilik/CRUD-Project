@@ -1,17 +1,36 @@
-﻿using TrainingProjectsUsers;
+﻿using System.Diagnostics;
+using TrainingProjectsUsers;
 
-Employee employee1 = new Employee("Иван", "Иванов", "Иванович",
-    new DateOnly(2001, 09, 02), "Пушкина 21",
-    "Продажи", "Зверюга");
+EmployeeFileService emplFileService = new EmployeeFileService();
+emplFileService.CreateFile();
 
-EmployeeSerialize serializer = new EmployeeSerialize();
+Console.WriteLine("Выбирите опцию: " +
+                  "\n 1) Добавить сотрудника" +
+                  "\n 2) Удалить сотрудника " +
+                  "\n 3) Просмотреть список сотрудников \n");
 
-string? serializeString = serializer.Serialize(employee1);
-
-EmployeeFileService fileService = new EmployeeFileService();
-
-fileService.CreateFile(fileService._filePath);
-
-fileService.SaveEmployeeToFile(fileService._filePath, serializeString);
-
-fileService.ReadEmployeesFile(fileService._filePath);
+switch (Console.ReadLine())
+{
+    case "1":
+        Employee employee1 = new Employee();
+        
+        Console.WriteLine("Введите имя сотрудника");
+        employee1.FirstName = Console.ReadLine();
+        Console.WriteLine("Введите фамилию сотрудника");
+        employee1.LastName = Console.ReadLine();
+        Console.WriteLine("Введите отчество сотрудника");
+        employee1.MiddleName = Console.ReadLine();
+        Console.WriteLine("Введите дату рождения сотрудника");
+        employee1.DateOfBirth = DateOnly.Parse(Console.ReadLine());
+        Console.WriteLine("Введите адрес сотрудника");
+        employee1.Address = Console.ReadLine();
+        Console.WriteLine("Введите отдел сотрудника");
+        employee1.AboutMe = Console.ReadLine();
+        Console.WriteLine("Введите информацию 'о себе' сотрудника");
+        
+        EmployeeSerialize employeeSerialize = new EmployeeSerialize();
+        string serializeString = employeeSerialize.Serialize(employee1);
+        
+        emplFileService.SaveEmployeeToFile(employee1, serializeString );
+        break;
+}
