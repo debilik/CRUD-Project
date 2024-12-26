@@ -33,16 +33,23 @@ public class EmployeeFileService
         }
     }
 
-    public void ReadEmployeesFile(string path)
+    public void ReadEmployeesFile()
     {
-        using (StreamReader employeeReader = new StreamReader(path))
+        using (StreamReader employeeReader = new StreamReader(_filePath))
         {
             string employeeDetails = employeeReader.ReadToEnd();
             Console.WriteLine(employeeDetails);
         }
     }
 
-    public void RemoveEmployee(string path)
+    public void RemoveEmployee(string firstName, string lastName, string middleName)
     {
+        var lines = File.ReadAllLines(_filePath).ToList();
+        var editedLine = lines.Where(line =>
+        {
+            var parts = line.Split(',');
+            return !(parts[0] == firstName && parts[1] == lastName && parts[2] == middleName);
+        }).ToList();
+        File.WriteAllLines(_filePath, editedLine);
     }
 }

@@ -12,3 +12,4 @@ C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\n
 C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.pdb
 C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.genruntimeconfig.cache
 C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\ref\TrainingProjectsUsers.dll
+C:\Users\povar\RiderProjects\Training Projects\TrainingProjectsUsers\obj\Debug\net8.0\TrainingProjectsUsers.sourcelink.json

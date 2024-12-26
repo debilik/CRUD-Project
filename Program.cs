@@ -25,12 +25,27 @@ switch (Console.ReadLine())
         Console.WriteLine("Введите адрес сотрудника");
         employee1.Address = Console.ReadLine();
         Console.WriteLine("Введите отдел сотрудника");
-        employee1.AboutMe = Console.ReadLine();
+        employee1.Department = Console.ReadLine();
         Console.WriteLine("Введите информацию 'о себе' сотрудника");
+        employee1.AboutMe = Console.ReadLine();
         
         EmployeeSerialize employeeSerialize = new EmployeeSerialize();
         string serializeString = employeeSerialize.Serialize(employee1);
         
         emplFileService.SaveEmployeeToFile(employee1, serializeString );
+        break;
+    case "2":
+        Console.WriteLine("Введите имя удаляемого сотрудника:");
+        string firstNameToDelited = Console.ReadLine();
+        Console.WriteLine("Введите фамилию удаляемого сотрудника:");
+        string lastNameToDelited = Console.ReadLine();
+        Console.WriteLine("Введите отчество удаляемого сотрудника:");
+        string middleNameToDelited = Console.ReadLine();
+        emplFileService.RemoveEmployee(firstNameToDelited, lastNameToDelited, middleNameToDelited);
+        break;
+    case "3":
+        emplFileService.ReadEmployeesFile();
+        break;
+    default: Console.WriteLine("Некорректная опция");
         break;
 }
