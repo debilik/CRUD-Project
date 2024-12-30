@@ -9,6 +9,7 @@ public class EmployeeSerialize
     {
         employeeFields = new[]
         {
+            employee.Id.ToString(),
             employee.FirstName,
             employee.LastName,
             employee.MiddleName,

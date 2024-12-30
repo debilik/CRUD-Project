@@ -4,48 +4,66 @@ using TrainingProjectsUsers;
 EmployeeFileService emplFileService = new EmployeeFileService();
 emplFileService.CreateFile();
 
-Console.WriteLine("Выбирите опцию: " +
-                  "\n 1) Добавить сотрудника" +
-                  "\n 2) Удалить сотрудника " +
-                  "\n 3) Просмотреть список сотрудников \n");
+bool showMenu = true;
 
-switch (Console.ReadLine())
+while (showMenu)
 {
-    case "1":
-        Employee employee1 = new Employee();
-        
-        Console.WriteLine("Введите имя сотрудника");
-        employee1.FirstName = Console.ReadLine();
-        Console.WriteLine("Введите фамилию сотрудника");
-        employee1.LastName = Console.ReadLine();
-        Console.WriteLine("Введите отчество сотрудника");
-        employee1.MiddleName = Console.ReadLine();
-        Console.WriteLine("Введите дату рождения сотрудника");
-        employee1.DateOfBirth = DateOnly.Parse(Console.ReadLine());
-        Console.WriteLine("Введите адрес сотрудника");
-        employee1.Address = Console.ReadLine();
-        Console.WriteLine("Введите отдел сотрудника");
-        employee1.Department = Console.ReadLine();
-        Console.WriteLine("Введите информацию 'о себе' сотрудника");
-        employee1.AboutMe = Console.ReadLine();
-        
-        EmployeeSerialize employeeSerialize = new EmployeeSerialize();
-        string serializeString = employeeSerialize.Serialize(employee1);
-        
-        emplFileService.SaveEmployeeToFile(employee1, serializeString );
-        break;
-    case "2":
-        Console.WriteLine("Введите имя удаляемого сотрудника:");
-        string firstNameToDelited = Console.ReadLine();
-        Console.WriteLine("Введите фамилию удаляемого сотрудника:");
-        string lastNameToDelited = Console.ReadLine();
-        Console.WriteLine("Введите отчество удаляемого сотрудника:");
-        string middleNameToDelited = Console.ReadLine();
-        emplFileService.RemoveEmployee(firstNameToDelited, lastNameToDelited, middleNameToDelited);
-        break;
-    case "3":
-        emplFileService.ReadEmployeesFile();
-        break;
-    default: Console.WriteLine("Некорректная опция");
-        break;
+    Console.WriteLine("Выбирите опцию: " +
+                      "\n 1) Добавить сотрудника" +
+                      "\n 2) Удалить сотрудника " +
+                      "\n 3) Просмотреть список сотрудников" +
+                      "\n 4) Закрыть программу");
+
+    switch (Console.ReadLine())
+    {
+        case "1":
+
+            Console.WriteLine("Введите имя сотрудника");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Введите фамилию сотрудника");
+            string lastName = Console.ReadLine();
+            Console.WriteLine("Введите отчество сотрудника");
+            string middleName = Console.ReadLine();
+            Console.WriteLine("Введите дату рождения сотрудника");
+            DateOnly dateOfBirth = DateOnly.Parse(Console.ReadLine());
+            Console.WriteLine("Введите адрес сотрудника");
+            string address = Console.ReadLine();
+            Console.WriteLine("Введите отдел сотрудника");
+            string department = Console.ReadLine();
+            Console.WriteLine("Введите информацию 'о себе' сотрудника");
+            string aboutMe = Console.ReadLine();
+
+
+            int id = File.ReadAllLines(emplFileService.FilePath).Count();
+
+            Employee employee1 = new Employee(id, firstName, lastName, middleName, dateOfBirth, address, department,
+                aboutMe);
+
+
+            EmployeeSerialize employeeSerialize = new EmployeeSerialize();
+            string serializeString = employeeSerialize.Serialize(employee1);
+
+            emplFileService.SaveEmployeeToFile(employee1, serializeString);
+            break;
+        case "2":
+            Console.WriteLine("Введите имя удаляемого сотрудника:");
+            string firstNameToDelited = Console.ReadLine();
+            Console.WriteLine("Введите фамилию удаляемого сотрудника:");
+            string lastNameToDelited = Console.ReadLine();
+            Console.WriteLine("Введите отчество удаляемого сотрудника:");
+            string middleNameToDelited = Console.ReadLine();
+            emplFileService.RemoveEmployee(firstNameToDelited, lastNameToDelited, middleNameToDelited);
+            Console.WriteLine($"Сотрудник {firstNameToDelited} {lastNameToDelited} {middleNameToDelited} удалён");
+            break;
+        case "3":
+            emplFileService.ReadEmployeesFile();
+            break;
+        case "4":
+            showMenu = false;
+            Console.WriteLine("Программа закрыта");
+            break;
+        default:
+            Console.WriteLine("Некорректная опция");
+            break;
+    }
 }

@@ -11,9 +11,10 @@ public class Employee
     public string Department { get; set; }
     public string AboutMe { get; set; }
 
-    public Employee(string firstName, string lastName, string middleName,
+    public Employee(int id, string firstName, string lastName, string middleName,
         DateOnly dateOfBirth, string address, string department, string aboutMe)
     {
+        Id = id;
         FirstName = firstName;
         LastName = lastName;
         MiddleName = middleName;
@@ -25,8 +26,5 @@ public class Employee
 
     public Employee()
     {
-        
     }
-    
-    
 }

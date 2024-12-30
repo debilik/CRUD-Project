@@ -6,27 +6,27 @@ public class EmployeeFileService
 {
     private string _directoryPath;
 
-    public string _filePath;
+    public string FilePath;
 
     List<Employee> _employees = new List<Employee>();
 
     public EmployeeFileService()
     {
         _directoryPath = Directory.GetCurrentDirectory();
-        _filePath = Path.Combine(_directoryPath, "employee.txt");
+        FilePath = Path.Combine(_directoryPath, "employee.txt");
     }
 
     public void CreateFile()
     {
-        if (!File.Exists(_filePath))
+        if (!File.Exists(FilePath))
         {
-            using FileStream fs = File.Create(_filePath);
+            using FileStream fs = File.Create(FilePath);
         }
     }
 
     public void SaveEmployeeToFile(Employee employee, string? serializeEmployeeString)
     {
-        using (StreamWriter employeeWriter = new StreamWriter(_filePath, true))
+        using (StreamWriter employeeWriter = new StreamWriter(FilePath, true))
         {
             employeeWriter.WriteLine(serializeEmployeeString);
             _employees.Add(employee);
@@ -35,7 +35,7 @@ public class EmployeeFileService
 
     public void ReadEmployeesFile()
     {
-        using (StreamReader employeeReader = new StreamReader(_filePath))
+        using (StreamReader employeeReader = new StreamReader(FilePath))
         {
             string employeeDetails = employeeReader.ReadToEnd();
             Console.WriteLine(employeeDetails);
@@ -44,12 +44,27 @@ public class EmployeeFileService
 
     public void RemoveEmployee(string firstName, string lastName, string middleName)
     {
-        var lines = File.ReadAllLines(_filePath).ToList();
+        var lines = File.ReadAllLines(FilePath).ToList();
         var editedLine = lines.Where(line =>
         {
             var parts = line.Split(',');
             return !(parts[0] == firstName && parts[1] == lastName && parts[2] == middleName);
         }).ToList();
-        File.WriteAllLines(_filePath, editedLine);
+        File.WriteAllLines(FilePath, editedLine);
+    }
+
+    public void EditEmployee(int id)
+    {
+        /* var lines = File.ReadAllLines(_filePath).ToList();
+        var editedLine = lines.Where(line =>
+        {
+            var parts = line.Split(',');
+            if (parts[0] == firstName && parts[1] == lastName && parts[2] == middleName)
+            {
+                
+            }
+
+            
+        }).ToList(); */
     }
 }
