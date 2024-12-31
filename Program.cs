@@ -44,18 +44,16 @@ while (showMenu)
             string serializeString = employeeSerialize.Serialize(employee1);
 
             emplFileService.SaveEmployeeToFile(employee1, serializeString);
+
+            Console.WriteLine($"Сотрудник {firstName} {lastName} добавлен");
             
             
             break;
         case "2":
-            Console.WriteLine("Введите имя удаляемого сотрудника:");
-            string firstNameToDelited = Console.ReadLine();
-            Console.WriteLine("Введите фамилию удаляемого сотрудника:");
-            string lastNameToDelited = Console.ReadLine();
-            Console.WriteLine("Введите отчество удаляемого сотрудника:");
-            string middleNameToDelited = Console.ReadLine();
-            emplFileService.RemoveEmployee(firstNameToDelited, lastNameToDelited, middleNameToDelited);
-            Console.WriteLine($"Сотрудник {firstNameToDelited} {lastNameToDelited} {middleNameToDelited} удалён");
+            Console.WriteLine("Введите id удаляемого сотрудника:");
+            string idToDeleted = Console.ReadLine();
+            emplFileService.DeleteEmployeeById(idToDeleted);
+            Console.WriteLine($"Сотрудник удалён");
             break;
         case "3":
             emplFileService.ReadEmployeesFile();
