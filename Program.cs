@@ -44,6 +44,8 @@ while (showMenu)
             string serializeString = employeeSerialize.Serialize(employee1);
 
             emplFileService.SaveEmployeeToFile(employee1, serializeString);
+            
+            
             break;
         case "2":
             Console.WriteLine("Введите имя удаляемого сотрудника:");

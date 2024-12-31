@@ -55,16 +55,6 @@ public class EmployeeFileService
 
     public void EditEmployee(int id)
     {
-        /* var lines = File.ReadAllLines(_filePath).ToList();
-        var editedLine = lines.Where(line =>
-        {
-            var parts = line.Split(',');
-            if (parts[0] == firstName && parts[1] == lastName && parts[2] == middleName)
-            {
-                
-            }
-
-            
-        }).ToList(); */
+        var lines = File.ReadAllLines(FilePath).ToList();
     }
 }
