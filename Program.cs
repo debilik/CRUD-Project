@@ -12,7 +12,9 @@ while (showMenu)
                       "\n 1) Добавить сотрудника" +
                       "\n 2) Удалить сотрудника " +
                       "\n 3) Просмотреть список сотрудников" +
-                      "\n 4) Закрыть программу");
+                      "\n 4) Изменить данные сотрудника(предварительно посмотрите его ID)" +
+                      "\n 5) Закрыть программу");
+        
 
     switch (Console.ReadLine())
     {
@@ -59,6 +61,11 @@ while (showMenu)
             emplFileService.ReadEmployeesFile();
             break;
         case "4":
+            Console.WriteLine("Введите ID сотрудника: ");
+            int idEmployee = int.Parse(Console.ReadLine());
+            emplFileService.EditEmployee(idEmployee);
+            break;
+        case "5":
             showMenu = false;
             Console.WriteLine("Программа закрыта");
             break;

@@ -58,7 +58,7 @@ public class EmployeeFileService
         Console.WriteLine($"Сотрудник с ID {id} удалён.");
     }
 
-    /*public void EditEmployee(int id)
+    public void EditEmployee(int id)
     {
         var lines = File.ReadAllLines(FilePath).ToList();
         var employeeIndex = lines.FindIndex(line => line.StartsWith(id + ","));
@@ -77,22 +77,57 @@ public class EmployeeFileService
         };
 
         Console.WriteLine("Текущие данные сотрудника:");
-        Console.WriteLine($"1. FirstName: {employee.FirstName}");
-        Console.WriteLine($"2. LastName: {employee.LastName}");
-        Console.WriteLine($"3. MiddleName: {employee.MiddleName}");
-        Console.WriteLine($"4. DateOfBirth: {employee.DateOfBirth}");
-        Console.WriteLine($"5. Address: {employee.Address}");
-        Console.WriteLine($"6. Department: {employee.Department}");
-        Console.WriteLine($"7. AboutMe: {employee.AboutMe}");
+        Console.WriteLine($"1. Имя: {employee.FirstName}");
+        Console.WriteLine($"2. Фамилия: {employee.LastName}");
+        Console.WriteLine($"3. Отчество: {employee.MiddleName}");
+        Console.WriteLine($"4. Дата рождения: {employee.DateOfBirth}");
+        Console.WriteLine($"5. Адрес: {employee.Address}");
+        Console.WriteLine($"6. Отдел: {employee.Department}");
+        Console.WriteLine($"7. О себе: {employee.AboutMe}");
         Console.WriteLine("Введите номер поля, которое хотите изменить, или 0 для завершения:");
 
         while (true)
         {
             int choice = Convert.ToInt32(Console.ReadLine() ?? "0");
             if (choice == 0) break;
+
+            Console.WriteLine("Введите новое значение: ");
+            string newValue = Console.ReadLine() ?? string.Empty;
+
+            switch (choice)
             {
-                
+                case 1:
+                    employee.FirstName = newValue;
+                    break;
+                case 2:
+                    employee.LastName = newValue;
+                    break;
+                case 3:
+                    employee.MiddleName = newValue;
+                    break;
+                case 4:
+                    employee.DateOfBirth = DateOnly.Parse(newValue);
+                    break;
+                case 5:
+                    employee.Address = newValue;
+                    break;
+                case 6:
+                    employee.Department = newValue;
+                    break;
+                case 7:
+                    employee.AboutMe = newValue;
+                    break;
+                default:
+                    Console.WriteLine("Неверный выбор. Попробуйте снова.");
+                    continue;
             }
+
+            Console.WriteLine("Поле успешно обновлено. Выберите следующее или нажмите 0 для завершения");
         }
-    }*/
+
+        lines[employeeIndex] = $"{employee.Id}, {employee.FirstName}, {employee.LastName}, {employee.MiddleName} " +
+                               $"{employee.DateOfBirth}, {employee.Address}, {employee.Department}, {employee.AboutMe}";
+        File.WriteAllLines(FilePath, lines);
+        Console.WriteLine("Данные сотрудника обновлены");
+    }
 }
